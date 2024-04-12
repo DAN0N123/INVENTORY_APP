@@ -34,18 +34,35 @@ nav{
     grid-template: repeat(10, 1fr) / repeat(10, 1fr);
 }
 
+.board .box{
+    background-color: white;
+    outline: 1px solid black;
+    filter: saturate(150%);
+    cursor: pointer;
+    background-image: url('../MISC/water2.png');
+}
+
+.board .box:hover{
+    outline: 1px solid black;
+    filter: brightness(70%);
+}
+
+
+
 .numeric{
     display: grid;
     position: absolute;
     margin-left: -30px;
-    margin-top: 15px;
-    width: 50px;
+    width: 30px;
+    align-items: center;
     height: 500px;
     grid-template: repeat(10, 1fr) / 1fr;
 }
 
 .numeric div,
 .alphabetic div{
+    z-index: -1;
+    pointer-events: none;
     font-family: 'ROBOTO';
     font-size: 20px;
 }
@@ -53,9 +70,10 @@ nav{
 .alphabetic{
     display: grid;
     position: absolute;
+    justify-items: center;
     margin-top: -30px;
-    margin-left: 15px;
     width: 500px;
-    height: 50px;
+    height: 30px;
     grid-template:  1fr / repeat(10, 1fr);
 }
+

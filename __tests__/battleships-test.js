@@ -1,4 +1,4 @@
-const {Ship, Gameboard} = require('../LOGIC/battleshipsMain.js');
+import { Ship, Gameboard, Player } from '../LOGIC/battleshipsMain.js';
 
 test('ship taking damage', () => {
     const myShip = new Ship(4, 'vertical');
@@ -37,7 +37,7 @@ test('gameboard places ships horizontally', () => {
 test('gameboard refuses to place horizontal ship outside of board', () => {
     const myGameboard = new Gameboard('test');
     const myShip = new Ship(3, 'horizontal');
-    expect( () => myGameboard.placeShip(myShip, [8, 7])).toThrow()
+    expect( () => myGameboard.placeShip(myShip, [8, 8])).toThrow()
 })
 
 test('ship is hit through gameboard receiveAttack method', () =>{
@@ -70,7 +70,15 @@ test('recognize when game is not over yet', () => {
     myGameboard.placeShip(myShip, [5, 3]);
     myGameboard.receiveAttack([5,3]);
     myGameboard.receiveAttack([5,4]);
-    expect(myGameboard.isGameOver()).toBeFalsy()
+    expect(myGameboard.isGameOver()).toBeFalsy();
+})
+
+test("can't place ship on top of another ship", () => {
+    const myGameboard = new Gameboard('test');
+    const myShip = new Ship(3, 'horizontal');
+    myGameboard.placeShip(myShip, [5, 3]);
+    const myShip2 = new Ship(2, 'vertical');
+    expect( () => myGameboard.placeShip(myShip2, [5,4])).toThrow()
 })
 
 
