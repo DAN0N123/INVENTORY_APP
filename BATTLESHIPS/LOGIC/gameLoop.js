@@ -7,9 +7,11 @@ export class Game {
         this.round = 0;
         this.playerBox = document.querySelector('.player');
         this.aiBox = document.querySelector('.AI');
-        const PLAYER = new Player('yo');
+        const PLAYER = new Player(prompt('Enter your username: '));
         this.gameboardPlayer = new Gameboard(PLAYER);
         this.gameboardAI = new Gameboard('AI');
+        const playerNameBox = this.playerBox.querySelector('.name');
+        playerNameBox.textContent = PLAYER.name;
     }
 
     initiateGame(){
@@ -25,17 +27,29 @@ export class Game {
     }
 
     startBattle(){ 
-        const enemyBoard = document.querySelector('.AI'); 
-        for(const child of enemyBoard.children){
+        this.gameboardAI.aiPlaceShips()
+        for(const child of this.aiBox.children){
             if(child.classList.contains('box')){
                 child.addEventListener('click', (event) => { 
                     if(this.round % 2 == 0){ 
-                        const coordinates = event.target.id.split(',') 
+                        const coordinates = event.target.id.split('_') 
                         this.gameboardAI.receiveAttack(coordinates) 
                     }
                 });
         }}; 
     }
+
+    aiAttacks(){
+        const boxesLeft = [];
+        for(const box of this.playerBox.children){
+            if(box.classList.contains('box') && !box.classList.contains('hit')){
+                boxesLeft.push(box)
+            }
+        };
+        const target = boxesLeft[Math.floor(Math.random() * boxesLeft.length)];
+        this.gameboardPlayer.receiveAttack(target.id.split('_'));
+    }
+
 }
 
 
