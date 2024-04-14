@@ -97,6 +97,23 @@ nav{
     grid-template:  1fr / repeat(10, 1fr);
 }
 
-.hit{
-    background-image: url('../MISC/waterBombed.png');
+.board .box.hit{
+    background-image: url('../MISC/waterBombed.png') !important;
+}
+
+.board .box.hit.ship{
+    background-image: url('../MISC/shipHit.png') !important;
+}
+
+.name{
+    position: absolute;
+    bottom: -100px;
+    left: calc((100% - 300px) / 2);
+    font-size: 25px;
+    font-family: 'ROBOTO';
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    width: 300px;
+    height: 60px;
 }

@@ -2,13 +2,18 @@ import { playerShips, Game} from "./gameLoop.js";
 import { blinkDiv } from "./randomFunctions.js";
 
 export class Ship{
-    static placeShipDOM(coordinates){
+    static placeShipDOM(coordinates, isAi = false){
         const [y, x] = coordinates;
         try{
-            const box = document.getElementById(`${y + 1}_${x}`)
-            box.classList.add('ship');
-            box.style.backgroundColor = 'black';
-            box.style.backgroundImage = 'none';
+            if(isAi){
+                const box = document.getElementById(`${y + 1}_${x}_AI`)
+                box.classList.add('ship');
+            }else{
+                const box = document.getElementById(`${y + 1}_${x}`)
+                box.classList.add('ship');
+                box.style.backgroundColor = 'black';
+                box.style.backgroundImage = 'none';
+            }
         }catch{}
         
     }
@@ -44,6 +49,8 @@ export class Gameboard{
                       [0,0,0,0,0,0,0,0,0,0],
                       [0,0,0,0,0,0,0,0,0,0],
                       [0,0,0,0,0,0,0,0,0,0]]
+        this.currentShips = 0;
+        this.isAi = this.player === 'AI' ? true : false
     }
 
     make_DOM_board(grid, game){
@@ -61,14 +68,17 @@ export class Gameboard{
                 }
                 
                 box.classList.add('box');
-                box.addEventListener('click', (event) => {
-                    if(playerShips.length != 0){
-                        const [y,x] = event.target.id.split('_')
-                        console.log(y,x)
-                        this.placeShip(playerShips[0], [Number(y) - 1, Number(x)])
-                        playerShips.shift()
-                    }
-                })
+                if(!this.isAi){
+                    box.addEventListener('click', (event) => {
+                        console.log(playerShips)
+                        if(playerShips.length != 0){
+                            const [y,x] = event.target.id.split('_')
+                            this.placeShip(playerShips[0], [Number(y) - 1, Number(x)])
+                            if(playerShips.length != 0) playerShips.shift();
+                        }
+                    })
+                }
+                
                 grid.appendChild(box);
                 x++
             }
@@ -146,42 +156,63 @@ export class Gameboard{
         if((ship.orientation === 'vertical' && coordinates[0] + ship.length - 1 <= 9) && (coordinates[0] <= 9 && coordinates[1] <= 9) && !this.isShipInWay(ship, coordinates)){
             for(let i = 0; i < ship.length; i++){
                 this.board[coordinates[0] + i][coordinates[1]] = ship;
-                Ship.placeShipDOM([coordinates[0] + i, coordinates[1]]);
+                Ship.placeShipDOM([coordinates[0] + i, coordinates[1]], this.isAi);
                 this.shipPlacement();
-                if(playerShips.length === 1){
+                if(playerShips.length === 1 && !this.isAi){
+                    playerShips.shift()
                     this.game.startBattle()
                 }
             }
+            this.currentShips++
         }else if((ship.orientation === 'horizontal' && coordinates[1] + ship.length - 1 <= 9) && (coordinates[0] <= 9 && coordinates[1] <= 9) && !this.isShipInWay(ship, coordinates)){
             for(let i = 0; i < ship.length; i++){
                 this.board[coordinates[0]][coordinates[1] + i] = ship;
-                Ship.placeShipDOM([coordinates[0], coordinates[1] + i]);
+                Ship.placeShipDOM([coordinates[0], coordinates[1] + i], this.isAi);
                 this.shipPlacement();
-                if(playerShips.length === 1){
+                if(playerShips.length === 1 && !this.isAi){
+                    playerShips.shift()
                     this.game.startBattle()
                 }
             }
+            this.currentShips++
         }else{
-            blinkDiv(this.DOM)
-            throw new Error(`error occured while placing ship / data: Ship - Length ${ship.length} Orientation ${ship.orientation}, Coordinates - ${coordinates}`)
+            if(!this.isAi) blinkDiv(this.DOM);
+            throw new Error(`error occured while placing ship / data: Ship - Length ${ship.length} Orientation ${ship.orientation}, Coordinates - ${coordinates}`);
         };
     }
 
     receiveAttack(coordinates){
         if(typeof this.board[coordinates[0] - 1][coordinates[1]] === 'object'){
-            const myShip = this.board[coordinates[0]][coordinates[1]];
+            const myShip = this.board[coordinates[0] - 1][coordinates[1]];
             myShip.hit()
-            const box = this.DOM.getElementById(coordinates.join('_'));
+            const box = document.getElementById(coordinates.join('_'));
             box.classList.add('hit');
             this.game.round++
         }else{
             this.board[coordinates[0] - 1][coordinates[1]] = -1;
-            console.log(this.DOM)
-            const box = this.DOM.querySelector(`#${coordinates.join('_')}`);
+            const box = document.getElementById(coordinates.join('_'));
             box.classList.add('hit');
             box.classList.add('missed');
+            
             this.game.round++
         }
+        if(this.player === 'AI') {
+            setTimeout(() => this.game.aiAttacks(), 1000)
+        };
+    }
+    
+    aiPlaceShips(){
+        if(this.currentShips < 5){
+            const length = Math.floor(Math.random() * 5) + 1;
+            const orientation = ['vertical', 'horizontal'][Math.floor(Math.random() * 2 )];
+            const myShip = new Ship(length, orientation);
+            try{
+                const y = Math.floor(Math.random() * 10);
+                const x = Math.floor(Math.random() * 10);
+                this.placeShip(myShip, [y,x]);
+            }catch{}
+            return this.aiPlaceShips()
+        }else return;
     }
 
     isGameOver(){
