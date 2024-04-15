@@ -1,4 +1,4 @@
-import { Ship, Gameboard, Player } from '../LOGIC/battleshipsMain.js';
+import { Ship, Gameboard, Player } from '../SRC/battleshipsMain.js';
 
 test('ship taking damage', () => {
     const myShip = new Ship(4, 'vertical');
@@ -31,7 +31,7 @@ test('gameboard places ships horizontally', () => {
     const myGameboard = new Gameboard('test');
     const myShip = new Ship(3, 'horizontal');
     myGameboard.placeShip(myShip, [5, 3]);
-    expect(typeof myGameboard.board[5,4]).toBe('object')
+    expect(typeof myGameboard.board[5,4]).toBe('object');
 })
 
 test('gameboard refuses to place horizontal ship outside of board', () => {

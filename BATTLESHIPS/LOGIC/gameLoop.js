@@ -4,12 +4,17 @@ export let playerShips = [];
 
 export class Game {
     constructor(){
+        playerShips = [];
         this.round = 0;
         this.playerBox = document.querySelector('.player');
         this.aiBox = document.querySelector('.AI');
-        const PLAYER = new Player(prompt('Enter your username: '));
+        // const PLAYER = new Player(prompt('Enter your username: '));
+        const PLAYER = new Player('Felipe');
+        const AI = new Player('AI');
+        this.player = PLAYER;
+        this.ai = AI;
         this.gameboardPlayer = new Gameboard(PLAYER);
-        this.gameboardAI = new Gameboard('AI');
+        this.gameboardAI = new Gameboard(AI);
         const playerNameBox = this.playerBox.querySelector('.name');
         playerNameBox.textContent = PLAYER.name;
     }

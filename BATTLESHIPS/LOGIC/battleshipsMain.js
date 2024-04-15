@@ -1,5 +1,12 @@
 import { playerShips, Game} from "./gameLoop.js";
-import { blinkDiv } from "./randomFunctions.js";
+import { blinkDiv, closeDialog, openDialog, resetGame} from "./randomFunctions.js";
+
+const playAgainButton = document.querySelector('.playAgainButton');
+playAgainButton.addEventListener('click', () => {
+    closeDialog()
+    resetGame()
+})
+
 
 export class Ship{
     static placeShipDOM(coordinates, isAi = false){
@@ -14,7 +21,7 @@ export class Ship{
                 box.style.backgroundColor = 'black';
                 box.style.backgroundImage = 'none';
             }
-        }catch{}
+        }catch{} 
         
     }
 
@@ -50,7 +57,7 @@ export class Gameboard{
                       [0,0,0,0,0,0,0,0,0,0],
                       [0,0,0,0,0,0,0,0,0,0]]
         this.currentShips = 0;
-        this.isAi = this.player === 'AI' ? true : false
+        this.isAi = this.player.name === 'AI' ? true : false
     }
 
     make_DOM_board(grid, game){
@@ -61,7 +68,7 @@ export class Gameboard{
             for(const tile of row){
                 const box = document.createElement('div');
                 const y = this.board.indexOf(row) + 1;
-                if(this.player === 'AI'){
+                if(this.player.name === 'AI'){
                     box.id = `${y}_${x}_AI`
                 }else{
                     box.id = `${y}_${x}`
@@ -184,19 +191,35 @@ export class Gameboard{
     receiveAttack(coordinates){
         if(typeof this.board[coordinates[0] - 1][coordinates[1]] === 'object'){
             const myShip = this.board[coordinates[0] - 1][coordinates[1]];
-            myShip.hit()
             const box = document.getElementById(coordinates.join('_'));
-            box.classList.add('hit');
-            this.game.round++
+            if(!box.classList.contains('hit')){
+                myShip.hit()
+                box.classList.add('hit');
+                this.game.round++
+                if(this.isGameOver()){
+                    if(this.isAi) this.game.player.winGame(); else this.game.ai.winGame() 
+                }
+            }else{
+                blinkDiv(this.DOM);
+                return
+            }
+            
         }else{
             this.board[coordinates[0] - 1][coordinates[1]] = -1;
             const box = document.getElementById(coordinates.join('_'));
-            box.classList.add('hit');
-            box.classList.add('missed');
-            
-            this.game.round++
+            if(!box.classList.contains('hit')){
+                box.classList.add('hit');
+                box.classList.add('missed');
+                this.game.round++
+                if(this.isGameOver()){
+                    if(this.isAi) this.game.player.winGame(); else this.game.ai.winGame() 
+                }
+            }else{
+                blinkDiv(this.DOM);
+                return
+            }
         }
-        if(this.player === 'AI') {
+        if(this.player.name === 'AI') {
             setTimeout(() => this.game.aiAttacks(), 1000)
         };
     }
@@ -210,8 +233,8 @@ export class Gameboard{
                 const y = Math.floor(Math.random() * 10);
                 const x = Math.floor(Math.random() * 10);
                 this.placeShip(myShip, [y,x]);
-            }catch{}
-            return this.aiPlaceShips()
+            }catch{};
+            return this.aiPlaceShips();
         }else return;
     }
 
@@ -233,7 +256,22 @@ export class Player {
         this.ships = [];
         this.lost = false;
     }
+
+    isGameLost(){
+        for(const ship of this.ships){
+            if(ship.sunk === false) return false;
+        }return true
+    }
+
+    winGame(){
+        const dialogText = document.querySelector('.shaker p');
+        dialogText.textContent = `${this.name} has won the game!`
+        openDialog()
+    }
 }
 
 const newGame = new Game();
 newGame.initiateGame()
+
+
+
