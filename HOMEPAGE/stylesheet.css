@@ -1,9 +1,15 @@
 body{
     margin: 0;
+    overflow-x: hidden;
 }
 
 @media (min-width: 1900px){
     
+}
+
+@font-face {
+    font-family: 'ROBOTO';
+    src: url('./MISC/Roboto-Black.ttf');
 }
 
 @font-face {
@@ -32,6 +38,7 @@ body{
     display: flex;
     width: 100%;
     height: 100%;
+    gap: 150px;
     padding-top: 100px;
     flex-direction: column;
     align-items: center;
@@ -45,9 +52,214 @@ body{
     justify-content: center;
     padding: 32px;
     box-shadow: 2px 2px 4px rgb(153, 153, 153);
-    font-family: 'PD';
+    font-family: 'PD' !important;
 }
 
 .aboutMe p{
     font-size: 1.1rem;
+}
+
+.navbar{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1080px;
+    padding-left: 150px;
+    background-color: white;
+    height: 70px;
+    box-shadow: 0px 1px 2px #571818;
+    font-family: 'ROBOTO';
+    font-size: 1em;
+    align-items: center;
+}
+
+.links{
+    display: flex;
+    gap: 35px;
+    padding-top: 10px;
+}
+.links div{
+    position: relative;
+    padding-bottom: 10px;
+    width: 80px;
+    text-align: center;
+    font-size: 1.1em;
+}
+.links div:hover{
+    cursor: pointer;
+    scale: 1.05;
+}
+.links div:hover::after,
+.links div:hover::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 2px; 
+    background-color: #571818; 
+}
+
+.links div:hover::before {
+    left: 20%; 
+    animation: growBorder 0.1s linear;
+    width: 30%;
+}
+.links div:hover::after {
+    right: 20%; 
+    animation: growBorder 0.1s linear;
+    width: 30%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.imgLinks{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+a:active{
+    color: rgb(77, 77, 77);
+}
+
+a:hover{
+    transform: scale(1.1);
+}
+@keyframes growBorder{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 30%;
+    }
+}
+
+
+.projects{
+    display: flex;
+    width: 100%;
+    gap: 50px;
+    padding-left: 400px;
+    min-height: 900px;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 20px;
+}
+
+.header{
+    font-size: 2em;
+    font-family: 'PD';
+}
+
+.tiles{
+    display: grid;
+    width: calc(100% - 400px);
+    gap: 50px;
+    height: 1000px;
+    grid-template: 1fr 1fr / repeat(3, 1fr);
+}
+
+.tile{
+    padding: 16px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgb(100, 99, 99);
+    overflow: hidden;
+}
+
+.tile img{
+    height: 60%;
+    width: auto;
+    object-fit: cover;
+}
+.screenshot{
+    overflow: hidden;
+}
+.tile img:hover{
+    animation: imageZoomIn 0.05s linear;
+    scale: 1.1;
+    cursor: pointer;
+}
+
+@keyframes imageZoomIn {
+    0%{
+        scale: 1;
+    }
+    100%{
+        scale: 1.1;
+    }
+}
+
+.projectDescription{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 40%;
+    width: 100%;
+    background-color: white;
+}
+
+.titleAndLinks{
+    display: flex;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 30%;
+    font-size: 20px !important;
+}
+
+.title{
+    font-family: 'ROBOTO';
+    font-size: 19px;
+}
+
+.projectLinks{
+    display: flex;
+    gap: 15px;
+}
+
+.description{
+    width: 100%;
+    text-align: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 40px;
+    background-color: #571818;
+    margin-top: 100px;
+    color: white;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+}
+.randomText{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.phone,
+.email{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icons{
+    display: flex;
+    gap: 15px;
+}
+
+.icons svg:hover{
+    cursor: pointer;
 }
