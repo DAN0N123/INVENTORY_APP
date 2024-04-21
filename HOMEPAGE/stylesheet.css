@@ -1,24 +1,76 @@
 body{
     margin: 0;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
-@media (max-width: 640px){
+@media (min-width: 320px) and (max-width: 640px){
     body{
-        background-color: rgb(210, 219, 219);
+        background-color: rgb(255, 255, 255);
     }
     .navbar{
         display: none !important; 
     }
+    .backgroundShape{
+        margin-left: -200% !important;
+    }
     .aboutMe{
-        width: 80% !important;   
+        max-width:  450px!important;   
+    }
+    .bigbox{
+        align-items: center !important;
+    }
+    .portraitDiv{
+        padding: 0 !important;
+        margin-top: 50%;
     }
     .aboutMe img{
         position: absolute !important;
-        left: 50% !important;
-        top: -20% !important;
+        left: calc((100% - 400px) / 2) !important;
+        top: -70% !important;
+        height: auto !important;
+        width: 400px !important;
+        box-shadow: 0px 0px 2px rgb(0, 0, 0);
     }
+    .tiles{
+        align-content: center !important;
+        min-width: fit-content !important;
+        /* gap: 150px !important; */
+        min-height: calc(2400px + 6*30px + 50px) !important;
+        grid-template-rows: repeat(6, 400px)  !important; 
+        grid-template-columns: 300px !important;
+    }
+    .projects{
+        width: 500px !important;
+    }
+    .header{
+        margin-left: 0 !important;
+        align-self: center !important;
+    }
+    .tile{
+        padding: 8px !important;
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        height: 100% !important;
+        box-shadow: 0px 0px 5px rgb(100, 99, 99);
+        overflow: hidden;
+    }
+    .info{
+        align-items: center !important;
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+    };
+
+    footer img{
+        height: 60% !important;
+        width: auto !important;
+    };
+    
 }
-@media (max-width: 878px) {
+@media (min-width: 640px) and (max-width: 878px) {
     .portraitDiv{
         padding: 0 !important;
     }
@@ -72,8 +124,6 @@ body{
         width: 20% !important;
     }
     footer img{
-        /* width: 500px !important;
-        height: auto !important; */
         height: 400px !important;
     }
 }
