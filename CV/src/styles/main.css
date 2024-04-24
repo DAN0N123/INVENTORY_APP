@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'ROBOTO';
+  src: url('../assets/Roboto-Black.ttf');
+}
+.bigbox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-family: 'ROBOTO';
+  padding: 32px;
+  gap: 30px;
+}
+
+.header{
+  border-bottom: 3px solid white;
+  align-self: flex-start;
+  width: 100%;
+  font-size: 27px;
+}
+
+.customInput{
+  font-size: 20px;
+  padding: 8px;
+  color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: #0D1117;
+  padding: none;
+  
+}
+
+.customInput:focus{
+  transform: scale(1.05);
+  outline: none;
+  border-color: #1974EC;
+}
+
+
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 40px;
+  font-size: 19px;
+  font-family: 'ROBOTO'; 
+  color: white;
+  background-color: #1974EC;
+  border: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.btn:hover{
+  cursor: pointer;
+  filter: brightness(94%);
+  transform: scale(1.05);
+}
+
+.form.hidden,
+.displayData.hidden{
+  display: none;
+}
+
+
+.displayData{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 21px;
+  align-items: center;
+}
+
+.displayData div{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

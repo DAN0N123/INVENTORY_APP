@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 @media (min-width: 320px) and (max-width: 640px){
     body{
@@ -63,7 +63,6 @@ body{
         display: flex;
         flex-direction: column;
     };
-
     footer img{
         height: 60% !important;
         width: auto !important;
@@ -269,6 +268,7 @@ a:hover{
 .projects{
     display: flex;
     gap: 50px;
+    width: 80%;
     min-height: fit-content;
     flex-direction: column;
     align-items: center;
