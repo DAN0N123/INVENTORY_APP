@@ -15,7 +15,7 @@ export default function Practical(){
     function submitData(event){
         event.preventDefault()
         formRef.current.classList.add('hidden')
-        dataDisplayRef.current.classList.remove('hidden')
+        dataDisplayRef.current.classList.remove('hidden') 
     }
 
     function editForm(){
@@ -33,7 +33,7 @@ export default function Practical(){
                 <br />
                 <CustomInput key="responsibilities" id="responsibilities" label="Main responsibilities" currentValue={data.responsibilities} onChange={updateData}> </CustomInput>
                 <br />
-                <div className="date">
+                <div className="dateRange">
                     <CustomInput key="dateFrom" id="dateFrom" label="From" datePlaceholder="From" type="date" currentValue={data.dateFrom} onChange={updateData}> </CustomInput>
                     <CustomInput key="dateTo" id="dateTo" label="To" type="date" datePlaceholder="To" currentValue={data.dateTo} onChange={updateData}> </CustomInput>
                 </div>

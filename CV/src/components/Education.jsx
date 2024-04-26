@@ -35,7 +35,7 @@ function Education() {
                     <br />
                     <CustomInput key="title" id="title" label="Title of Study" onChange={updateData}></CustomInput>
                     <br />
-                    <CustomInput key="date" id="date" type="date" label="Date of Study" onChange={updateData}></CustomInput>
+                    <CustomInput key="date" id="date" type="date" datePlaceholder="Date of Study" onChange={updateData}></CustomInput>
                     <br />
                     <button type="submit" className="submitBtn btn"> SUBMIT </button>
                 </form>
