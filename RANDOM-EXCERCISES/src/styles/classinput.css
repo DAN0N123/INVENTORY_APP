@@ -1,0 +1,49 @@
+.todo{
+    display: flex;
+    gap: 15px;
+}
+
+button{
+    border: none;
+    padding: 8px;
+    color: black;
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 8px;
+}
+button:not(.delete, .edit){
+    border: 1px solid black;
+}
+button:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+form{
+    display: flex;
+    align-items: center;
+}
+form input{
+    height: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.todo p{
+    display: flex;
+    align-items: center;
+}
+
+.hide{
+    display: none;
+}
+
+
