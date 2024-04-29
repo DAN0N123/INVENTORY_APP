@@ -103,7 +103,7 @@ class ClassInput extends Component {
                     </svg> 
                     <input defaultValue={todo} className="hide" id={todo + '_input'} type="text"></input>
                     <div id={todo + '_display'}> {todo} </div>
-                    <button type="submit" className="hide" id={todo + '_submit'}> Submit </button>
+                    <button type="submit" className="hide" id={todo + '_submit'}> Resubmit </button>
                 </form>
                 <button id={todo + '_edit'} onClick={this.editTask} className="edit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" className="bi bi-pencil-fill" viewBox="0 0 16 16">
