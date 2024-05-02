@@ -1,0 +1,53 @@
+
+
+
+nav{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+    font-size: 27px;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+nav:hover{
+    filter: brightness(96%);
+}
+
+nav div{
+    position: relative;
+}
+nav div::after{
+    right: 50%;
+}
+nav div::before{
+    left: 50%;
+}
+
+nav div:hover{
+    cursor: pointer;
+    scale: 1.05;
+}
+
+nav div::after,
+nav div::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    height: 2px;
+    width: 0;
+    transition: width 0.2s;
+}
+
+nav div:hover::before,
+nav div:hover::after{
+    width: 35%;
+}
+
+
+nav div:hover{
+    animation: bottomBorder 0.5s linear;
+}
+

@@ -36,7 +36,9 @@
   border-color: #1974EC;
 }
 
-
+.customInput:focus::placeholder{
+  color: #1974EC;
+}
 
 .form{
   display: flex;

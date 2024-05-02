@@ -15,6 +15,7 @@ function CustomInput({ label, id, currentValue, datePlaceholder, onChange, type 
                   type={type}
                   value={currentValue}
                   onChange={handleChange}
+                  required
               />
           </div>
     );
@@ -27,6 +28,7 @@ function CustomInput({ label, id, currentValue, datePlaceholder, onChange, type 
                   type={type}
                   value={currentValue}
                   onChange={handleChange}
+                  required
               />
               <div className="dateLabel"> {datePlaceholder} </div>
           </div>
