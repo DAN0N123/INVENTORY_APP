@@ -8,6 +8,7 @@ export default function Navbar(){
 
     return (
         <nav>
+            <img src="/logo.png" alt="neuralink logo" width='auto' height='50px'/>
             <div className="home"> HOME </div>
             <div className="shop"> SHOP </div>
         </nav>

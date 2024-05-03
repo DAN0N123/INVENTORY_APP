@@ -1,20 +1,21 @@
-
-
-
 nav{
     display: flex;
     justify-content: center;
     gap: 50px;
     padding: 20px;
     font-size: 27px;
-    border-bottom: 1px solid black;
+    height: 40px;
     background-color: white;
 }
 
 nav:hover{
-    filter: brightness(96%);
+    filter: brightness(98%);
 }
-
+nav img{
+    position: absolute;
+    left: 7%;
+    top: 15px;
+}
 nav div{
     position: relative;
 }

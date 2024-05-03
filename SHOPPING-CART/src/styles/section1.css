@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'MONTSERRAT';
+    src: url('../../public/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: 'MONTSERRAT-BOLD';
+    src: url('../../public/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: 'MONTSERRAT-ITALIC';
+    src: url('../../public/Montserrat-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'MONTSERRAT-LIGHT';
+    src: url('../../public/Montserrat-Light.ttf');
+}
+
+.section1{
+    background-color: #D1A88C;
+    display: flex;
+    justify-content: space-evenly;
+    height: 700px;
+}
+
+
+.neuralink{
+    margin-right: -250px;
+}
+.sectionText{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.mainText{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.mainText p{
+    font-family: 'MONTSERRAT';
+    font-size: 60px;
+    margin-bottom: -30px;
+}
+
+.mainText :nth-child(2){
+    align-self: flex-start;
+}
+
+.mainText :nth-child(3){
+    font-family: 'MONTSERRAT-BOLD';
+    position: relative;
+}
+
+.mainText :nth-child(3)::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: black;
+}
+
+.mission{
+    margin-top: 80px;
+    width: 600px;
+    font-size: 25px;
+    font-family: 'MONTSERRAT';
+}
+
+
+@property --myColor1 {
+    syntax: '<color>';
+    initial-value: #41414E;
+    inherits: false;
+  }
+  
+  @property --myColor2 {
+    syntax: '<color>';
+    initial-value: #222241;
+    inherits: false;
+  }
+
+.startShopping{
+    display: flex;
+    height: 70px;
+    color: white;
+    font-size: 30px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    align-self: center;
+    margin-top: 20px;
+    background: linear-gradient(to right, var(--myColor1), var(--myColor2));
+    transition: --myColor1 1s, --myColor2 1s;
+}
+
+.startShopping:hover{
+    cursor: pointer;
+    --myColor1: #856958;
+    --myColor2: #41414E;
+}
+
