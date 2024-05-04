@@ -1,7 +1,7 @@
 import '../styles/section1.css'
 
 
-export default function Section1() {
+export default function InitialSection() {
    
     return(
         <div className="section1">

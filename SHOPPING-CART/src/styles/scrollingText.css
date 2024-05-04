@@ -1,6 +1,3 @@
-
-
-
 .scrollingText{
     display: flex;
     gap: 20px;
@@ -22,9 +19,9 @@
 
 @keyframes scroll {
     0% {
-      transform: translateX(-2450px);
+      transform: translateX(2450px);
     }
     100% {
-      transform: translateX(2450px);
+      transform: translateX(-2450px);
     }
   }

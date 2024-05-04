@@ -1,14 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Navbar from './components/Navbar'
-import Section1 from './components/Section1'
-import ScrollingText from './components/ScrollingText'
-import MainShowcase from './components/MainShowcase'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Homepage from './components/Homepage'
+import Shop from './components/Shop';
+import Cart from './components/Cart';
+
+const router = createBrowserRouter( [
+    {
+      path: "/",
+      element: <Homepage />,
+    },
+    {
+      path: "shop",
+      element: <Shop />,
+    },
+    {
+      path: "cart",
+      element: <Cart />
+    },
+]);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Navbar />
-    <Section1 />
-    <ScrollingText />
-    <MainShowcase />
+    <RouterProvider router={router} /> 
   </React.StrictMode>,
 )

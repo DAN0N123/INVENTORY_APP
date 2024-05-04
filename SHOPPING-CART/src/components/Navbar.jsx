@@ -1,16 +1,17 @@
-import { useState } from "react";
 import '../styles/navbar.css'
-
+import { Link } from "react-router-dom";
 
 
 export default function Navbar(){
-    const [view, setView] = useState(null)
-
     return (
         <nav>
             <img src="/logo.png" alt="neuralink logo" width='auto' height='50px'/>
-            <div className="home"> HOME </div>
-            <div className="shop"> SHOP </div>
+            <div className="home">
+                <Link to="/" className='link'> HOME </Link>
+            </div>
+            <div className="shop">
+                <Link to="/shop" className='link'> SHOP </Link>
+            </div>
         </nav>
     )
 }

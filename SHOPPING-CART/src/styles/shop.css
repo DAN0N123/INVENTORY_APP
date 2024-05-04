@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'MONTSERRAT';
+    src: url('../../public/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'MONTSERRAT-BOLD';
+    src: url('../../public/Montserrat-Bold.ttf');
+}
+
+.items{
+    display: grid;
+    width: 100vw;
+    height: 100%;
+
+
+    grid-template: repeat(5, 500px) / 400px;
+    grid-row-gap: 30px;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    
+    
+
+    background-color: #8f8ff4;
+    opacity: 0.8;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #8f8ff4 40px ), repeating-linear-gradient( #444cf755, #444cf7 );
+}
+
+/* #242442 <- main color */ 
+
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 16px;
+
+}
+
+.item img{
+    width: 100%;
+    height: 70%;
+    filter: contrast(110%);
+}
+
+.name{
+    font-size: 30px;
+    font-family: 'MONTSERRAT';
+}
+
+.addToCart{
+    background-color: white;
+    border: 1px solid #242442;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 32px;
+    font-size: 20px;
+    font-family: 'MONTSERRAT-BOLD';
+}
+
+.addToCart:hover{
+    scale: 1.05;
+    cursor: pointer;
+    filter: brightness(96%);
+}
+
+.cart{
+    position: absolute;
+    right: 3%;
+    top: 21px;
+}
+
+
+.cart svg:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.cartText{
+    position: absolute;
+    width: 0;
+    height: 20px;
+    margin-right: 30px;
+    margin-top: 10px;
+    transition: width 1s ease, right 1s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    right: 0;
+}
+
+.cartText::before{
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    transition: width 0.5s ease;
+}
+
+.cartText.show::before{
+    width: 100px;
+}
+
+
+.cartText.show{
+    width: 100px;
+    right: 100%;
+}
+
+.flyingBox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid transparent;
+    border-radius: 300px;
+    background-color: #242442;
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    top: 65%;
+    animation: flyAnimation 0.5s linear forwards;
+    opacity: 0; 
+}
+
+
+@keyframes flyAnimation {
+    100% {
+        left: calc(97% - 29px);
+        top: 30px;
+        opacity: 0; 
+    }
+}
