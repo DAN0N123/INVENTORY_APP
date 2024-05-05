@@ -1,8 +1,95 @@
-.cartItems{
+.cartBox{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
     width: 100%;
     height: 100vh;
     background-color: #e5e5f7;
     opacity: 0.8;
     background-image: radial-gradient(circle at center center, #6168f1, #e5e5f7), repeating-radial-gradient(circle at center center, #6168f1, #6168f1, 40px, transparent 80px, transparent 40px);
     background-blend-mode: multiply;
+}
+
+
+.cartItems{
+    width: 80%;
+    height: 500px;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.itemsDisplay{
+    height: 80%;
+    font-size: 20px;
+}
+
+
+.deleteItem:hover{
+    cursor: pointer;
+}
+.cartItem{
+    display: flex;
+    gap: 30px;
+    height: 50px;
+    align-items: center;
+}
+
+.amountInput{
+    display: grid;
+    grid-template: 40px / 40px 70px 40px;
+    background-color: gray;
+    border: 1px solid transparent;
+    gap: 2px;
+    border-radius: 8px;
+}
+
+.amountInput *{
+    display: flex;
+    font-size: 22px;
+    justify-content: center;
+    align-items: center;
+}
+.amountInput :nth-child(1){
+    font-size: 30px;
+}
+.amountInput *:not(:nth-child(1)){
+    border-left: 2px solid black;
+}
+
+.increment:hover,
+.decrement:hover{
+    cursor: pointer;
+}
+
+.checkout{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.total{
+    font-size: 25px;
+}
+
+.pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    background-color: #8B8EEA;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+
+.pay:hover{
+    scale: 1.05;
+    cursor: pointer;
 }

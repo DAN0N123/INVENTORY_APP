@@ -47,10 +47,6 @@
     filter: contrast(110%);
 }
 
-.name{
-    font-size: 30px;
-    font-family: 'MONTSERRAT';
-}
 
 .addToCart{
     background-color: white;
@@ -73,10 +69,32 @@
 
 .cart{
     position: absolute;
+    display: flex;
     right: 3%;
     top: 21px;
 }
 
+.cart svg{
+    margin-right: 15px;
+}
+.cart p{
+    font-size: 20px;
+    margin: auto;
+}
+.name,
+.price{
+    font-size: 30px;
+    font-family: 'MONTSERRAT';
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
 
 .cart svg:hover{
     cursor: pointer;
