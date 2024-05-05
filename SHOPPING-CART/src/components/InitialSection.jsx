@@ -1,5 +1,5 @@
 import '../styles/section1.css'
-
+import { Link } from 'react-router-dom'
 
 export default function InitialSection() {
    
@@ -14,9 +14,9 @@ export default function InitialSection() {
                 <div className="mission">
                     Create a generalized brain interface to restore autonomy to those with unmet medical needs today and unlock human potential tomorrow.
                 </div>
-                <div className="startShopping">
+                <Link to="/shop" className="startShopping">
                     Start Shopping
-                </div>
+                </Link>
             </div>
             <img className="neuralink" src="/neuralink.jpeg" alt="hand holding the neuralink device" />
         </div>
