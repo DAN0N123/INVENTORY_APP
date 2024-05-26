@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+
+    .itemDetail 
+        p.itemName=item.name
+        div.itemInfo 
+            p= '$'+item.price
+            p=`Left in stock: ${item.number_in_stock}`
+        p.itemDescription=item.long_description
+        button.button='BUY NOW'

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  if furniture_list.length
+    div.items
+      each furniture in furniture_list
+        div.item
+          a.itemName(href=furniture.url) #{furniture.name}
+          div
+            p #{furniture.description} 
+            p $#{furniture.price} 
+            p In stock: #{furniture.number_in_stock} 
+  else
+    p There are no furnitures.

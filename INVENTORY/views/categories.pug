@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  each category in categories
+    div.category
+      div.categoryInfo
+        h4 
+          a(href=category.url)=category.name
+        h5 #{category.description}
+      div.items
+        each furniture in furnitures[category.name]
+          div.item
+            a.itemName(href=furniture.url) #{furniture.name}
+            div.itemInfo
+              p #{furniture.description} 
+              p $#{furniture.price} 
+              p In stock: #{furniture.number_in_stock} 
+
+  else
+    p There are no categories.
